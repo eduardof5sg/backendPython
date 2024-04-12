@@ -1,5 +1,6 @@
 from pymongo import MongoClient
 from flask import Flask, jsonify
+from flask_cors import CORS
 
 app = Flask(__name__)
 
@@ -8,7 +9,7 @@ client = MongoClient(uri)
 db = client.test
 
 @app.route('/users', methods=['GET'])
-
+CORS(app)
 def showUsers():
     try:
         documents = db.users.find()
